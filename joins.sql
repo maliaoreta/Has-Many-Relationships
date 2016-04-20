@@ -34,7 +34,9 @@
 -- WHERE users.created_at < '2015-01-01';
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as 'Post Title'), and the all the comment's fields
-
+SELECT comments.*, posts.title AS "Post Title" FROM comments
+INNER JOIN posts
+ON posts.id = comments.posts_id;
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created before January 1, 2015
 
