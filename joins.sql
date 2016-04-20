@@ -106,7 +106,10 @@
 
 -- ADDITIONAL
 -- Find the post id, post title, and user id of all posts where the post author commented on his/her own post. ( should have 2 results )
-
+SELECT posts.id, posts.title, posts.users_id FROM posts
+INNER JOIN comments
+ON comments.posts_id = posts.id
+WHERE comments.users_id = posts.users_id;
 
 -- Count how many comments have been written on posts that have been created after July 14, 2015 ( should have one result, the value of the count should be 25)
 -- SELECT COUNT(*) FROM comments
