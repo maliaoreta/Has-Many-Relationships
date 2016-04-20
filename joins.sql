@@ -2,10 +2,11 @@
 
 
 -- Create a query to get all fields from the users table
-SELECT * FROM users;
+-- SELECT * FROM users;
 
 -- Create a query to get all fields from the posts table where the user_id is 100
-
+SELECT * FROM posts
+WHERE users_id = 100;
 
 -- Create a query to get all posts fields, the user's first name, and the user's last name, from the posts table where the user's id is 200
 
