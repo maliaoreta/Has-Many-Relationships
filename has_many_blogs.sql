@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS users CASCADE;
+\c has_many_blogs;
+
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(90) NOT NULL,
@@ -8,7 +10,7 @@ CREATE TABLE users (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-DROP TABLE IF EXISTS posts CASCADE;
+DROP TABLE IF EXISTS posts;
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   title VARCHAR(180) DEFAULT NULL,
@@ -19,7 +21,7 @@ CREATE TABLE posts (
   users_id INTEGER REFERENCES users (id)
 );
 
-DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS comments;
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   body VARCHAR(510) DEFAULT NULL,
@@ -28,3 +30,5 @@ CREATE TABLE comments (
   users_id INTEGER REFERENCES users (id),
   posts_id INTEGER REFERENCES posts (id)
 );
+
+\i scripts/blog_data.sql;
