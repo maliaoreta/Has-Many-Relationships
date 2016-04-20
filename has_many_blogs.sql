@@ -18,3 +18,13 @@ CREATE TABLE posts (
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+DROP TABLE IF EXISTS comments CASCADE;
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY,
+  users_id INTEGER REFERENCES users (id),
+  posts_id INTEGER REFERENCES posts (id),
+  body VARCHAR(510) DEFAULT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
