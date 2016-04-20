@@ -115,3 +115,5 @@
 -- WHERE posts.created_at > '2015-07-14';
 
 -- Find all users who comment about 'programming' ( should have 337 results)
+-- SELECT users_id FROM comments
+-- WHERE comments.body LIKE '%programming%';
