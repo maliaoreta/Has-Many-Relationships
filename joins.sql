@@ -90,15 +90,28 @@
 -- AND posts.content LIKE '%dolorum%';
 
 -- Create a query to get the first name of the author of the post (aliased to post_author_first_name), last name of the author of the post (aliased to post_author_last_name), the post title (aliased to post_title), username of the author of the comment (aliased to comment_author_username), and comment body (aliased to comment_body), where the comment body contains the word 'SSL' or 'firewall' and the post content contains the word 'nemo' ( should have 197 results )
-SELECT users.first_name AS post_author_first_name,
-  users.last_name AS post_author_last_name,
-  users.username AS comment_author_username,
-  posts.title AS post_title,
-  comments.body AS comment_body
-  FROM comments
-INNER JOIN users
-ON users.id = comments.users_id
-INNER JOIN posts
-ON posts.users_id = users.id
-WHERE comments.body SIMILAR TO '%(SSL|firewall)%'
-AND posts.content LIKE '%nemo%';
+-- SELECT users.first_name AS post_author_first_name,
+--   users.last_name AS post_author_last_name,
+--   users.username AS comment_author_username,
+--   posts.title AS post_title,
+--   comments.body AS comment_body
+--   FROM comments
+-- INNER JOIN users
+-- ON users.id = comments.users_id
+-- INNER JOIN posts
+-- ON posts.users_id = users.id
+-- WHERE comments.body SIMILAR TO '%(SSL|firewall)%'
+-- AND posts.content LIKE '%nemo%';
+
+
+-- ADDITIONAL
+-- Find the post id, post title, and user id of all posts where the post author commented on his/her own post. ( should have 2 results )
+
+
+-- Count how many comments have been written on posts that have been created after July 14, 2015 ( should have one result, the value of the count should be 25)
+-- SELECT COUNT(*) FROM comments
+-- INNER JOIN posts
+-- ON posts.id = comments.posts_id
+-- WHERE posts.created_at > '2015-07-14';
+
+-- Find all users who comment about 'programming' ( should have 337 results)
