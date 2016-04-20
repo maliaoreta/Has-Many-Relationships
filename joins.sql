@@ -59,17 +59,25 @@
 -- WHERE posts.created_at > '2015-01-01';
 
 -- Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the comment body contains the word 'USB'
-SELECT comments.*,
-  comments.body AS comment_body,
-  posts.title AS post_title,
-  posts.url AS post_url
-  FROM comments
-INNER JOIN posts
-ON posts.id = comments.posts_id
-WHERE comments.body LIKE '%USB%';
+-- SELECT comments.*,
+--   comments.body AS comment_body,
+--   posts.title AS post_title,
+--   posts.url AS post_url
+--   FROM comments
+-- INNER JOIN posts
+-- ON posts.id = comments.posts_id
+-- WHERE comments.body LIKE '%USB%';
 
 -- Create a query to get the post title (aliased as post_title), first name of the author of the post, last name of the author of the post, and comment body (aliased to comment_body), where the comment body contains the word 'matrix' ( should have 855 results )
-
+SELECT posts.title AS post_title,
+  users.first_name, users.last_name,
+  comments.body AS comment_body
+  FROM users
+INNER JOIN posts
+ON posts.users_id = users.id
+INNER JOIN comments
+ON comments.posts_id = posts.id
+WHERE comments.body LIKE '%matrix%'; 
 
 -- Create a query to get the first name of the author of the comment, last name of the author of the comment, and comment body (aliased to comment_body), where the comment body contains the word 'SSL' and the post content contains the word 'dolorum' ( should have 102 results )
 
